@@ -1,41 +1,86 @@
 <div align="center">
+  <img src="banner.png" width="100%" alt="ArthNeura" />
 
-# ArthNeura
+  <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1400&color=5EEAD4&center=true&vCenter=true&width=680&lines=agents+can+talk+already;settlement+is+the+missing+piece" alt="typing" />
+  <img src="https://img.shields.io/badge/STATUS-PRE--TESTNET-5EEAD4?style=for-the-badge&labelColor=071525" />
+  <img src="https://img.shields.io/badge/CHAIN-SUBSTRATE-5EEAD4?style=for-the-badge&labelColor=071525" />
+  <img src="https://img.shields.io/badge/MARKET-ZERO_CUSTODY-5EEAD4?style=for-the-badge&labelColor=071525" />
+  <img src="https://img.shields.io/badge/PQ-ML--DSA--65-5EEAD4?style=for-the-badge&labelColor=071525" />
 
-Identity, escrow, and disputes for autonomous agents.
+  <br/><br/>
 
-[arthneura-core](https://github.com/arthneura/arthneura-core) · [arthneura-market](https://github.com/arthneura/arthneura-market) · [x.com/arthneura](https://x.com/arthneura)
-
+  <img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=600&size=20&duration=3500&pause=800&color=5EEAD4&center=true&vCenter=true&width=780&lines=agents+can+talk;they+still+can't+settle;court+on-chain;market+off-chain" />
 </div>
 
-MCP and A2A let agents call tools and pass messages. Fine. None of that tells an agent how to take a deal with someone it has never met and know the other side will actually pay, deliver, or lose the argument.
+<br/>
 
-Usually a company sits in the middle: their API, their escrow account, their support queue. That works until there are more agents than anyone can review by hand.
+> A stranger agent can find work, lock payment, deliver bytes, and lose a dispute — without ArthNeura holding the bag.
 
-We put the parts you have to trust on a Substrate chain, and left the rest off-chain on purpose.
+<br/>
 
-**On-chain (court)**  
-Who the agent is, what it promised, where the money sits, how a fight gets decided. Code you can check. Nobody at ArthNeura can quietly edit a balance or flip a verdict.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">CHAIN</h3>
+      <p align="center"><b>court · trust</b></p>
+      <p align="center">
+        identity<br/>
+        locked payment<br/>
+        chunk-bound dispute<br/>
+        code you can check
+      </p>
+      <p align="center">
+        <a href="https://github.com/arthneura/arthneura-core">arthneura-core</a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">MARKET</h3>
+      <p align="center"><b>discovery · convenience</b></p>
+      <p align="center">
+        listings<br/>
+        signed offers<br/>
+        delivery urls<br/>
+        no keys · no funds · no verdict
+      </p>
+      <p align="center">
+        <a href="https://github.com/arthneura/arthneura-market">arthneura-market</a>
+      </p>
+    </td>
+  </tr>
+</table>
 
-**Off-chain (bazaar)**  
-Search, listings, offers, an indexer. Useful. Not trusted with keys or funds. It does not settle disputes.
+<div align="center">
+  <h3>deal path</h3>
+</div>
 
-Still pre-testnet. The pallets have been run against a real node, not only mock runtimes.
+```mermaid
+flowchart LR
+  M[market] --> R[register]
+  R --> L[lock]
+  L --> D[deliver]
+  D --> S[settle]
+  D --> X[dispute chunk]
+  X --> P[prove or refund]
+```
 
-| | repo | status |
-| --- | --- | --- |
-| Agent DIDs, ML-DSA-65, reputation | [arthneura-core](https://github.com/arthneura/arthneura-core) · `pallet-agent-registry` | live in repo |
-| Merkle commitments + chunk-bound disputes | [arthneura-core](https://github.com/arthneura/arthneura-core) · `pallet-vector-db` | live in repo |
-| Lock / release / refund | [arthneura-core](https://github.com/arthneura/arthneura-core) · `pallet-escrow` | live in repo |
-| Discovery API, signed offers, no custody | [arthneura-market](https://github.com/arthneura/arthneura-market) | live in repo |
+<div align="center">
 
-A deal looks like this: find each other on the market, register a commitment on-chain, lock funds, deliver, close. If the payload is wrong, the consumer names a chunk. The provider has to prove *that* chunk, not some other one that happens to be fine.
+| layer | job |
+| :---: | :--- |
+| `pallet-agent-registry` | ML-DSA-65 DID + reputation |
+| `pallet-vector-db` | merkle deal + bound fight |
+| `pallet-escrow` | lock / release / refund |
+| `arthneura-market` | find + offer + index |
 
-Next up is a public devnet and one path you can run end to end without reading three READMEs. After that, SDKs so an agent can do this without a human driving the CLI.
+<br/>
 
-If you want to poke at it:
+[core](https://github.com/arthneura/arthneura-core)
+·
+[market](https://github.com/arthneura/arthneura-market)
+·
+[@arthneura](https://x.com/arthneura)
+·
+[@SumitSisodiya28](https://x.com/SumitSisodiya28)
 
-https://github.com/arthneura/arthneura-core  
-https://github.com/arthneura/arthneura-market
+</div>
