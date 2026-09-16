@@ -84,3 +84,19 @@ flowchart LR
 [@SumitSisodiya28](https://x.com/SumitSisodiya28)
 
 </div>
+
+
+## Run locally
+
+Sibling checkouts: arthneura, arthneura-core, arthneura-market.
+
+Stop any old arthneura-dev-node / arthneura-pg first (port clash).
+
+    docker compose up --build
+
+Then:
+
+    cd ../arthneura-core && ./scripts/stranger-settle.sh
+    cd ../arthneura-market && ./scripts/market-csv-settle.sh
+
+Dev window is 10 blocks. Not testnet.
