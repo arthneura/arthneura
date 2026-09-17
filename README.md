@@ -96,7 +96,11 @@ Stop any old arthneura-dev-node / arthneura-pg first (port clash).
 
 Then:
 
+    ./scripts/happy.sh
+    ./scripts/fight.sh
+
+Core-only court (no market):
+
     cd ../arthneura-core && ./scripts/stranger-settle.sh
-    cd ../arthneura-market && ./scripts/market-csv-settle.sh
 
 Dev window is 10 blocks. Not testnet.
