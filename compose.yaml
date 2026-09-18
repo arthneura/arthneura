@@ -22,7 +22,7 @@ services:
     command:
       [
         "--chain",
-        "local",
+        "dev",
         "--base-path",
         "/data",
         "--alice",
