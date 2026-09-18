@@ -22,7 +22,7 @@ services:
     command:
       [
         "--chain",
-        "dev",
+        "/specs/dev.json",
         "--base-path",
         "/data",
         "--alice",
@@ -35,6 +35,7 @@ services:
       ]
     volumes:
       - nodedata:/data
+      - ./chainspecs:/specs:ro
     ports:
       - "9944:9944"
 
