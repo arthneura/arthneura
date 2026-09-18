@@ -19,7 +19,22 @@ services:
     build:
       context: ../arthneura-core
       dockerfile: Dockerfile
-    command: ["--dev", "--rpc-external", "--rpc-cors=all", "--rpc-methods=unsafe"]
+    command:
+      [
+        "--chain",
+        "local",
+        "--base-path",
+        "/data",
+        "--alice",
+        "--validator",
+        "--force-authoring",
+        "--unsafe-force-node-key-generation",
+        "--rpc-external",
+        "--rpc-cors=all",
+        "--rpc-methods=unsafe",
+      ]
+    volumes:
+      - nodedata:/data
     ports:
       - "9944:9944"
 
@@ -55,3 +70,4 @@ services:
 
 volumes:
   pgdata:
+  nodedata:
