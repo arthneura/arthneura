@@ -88,19 +88,41 @@ flowchart LR
 
 ## Run locally
 
-Sibling checkouts: arthneura, arthneura-core, arthneura-market.
+Sibling checkouts: `arthneura`, `arthneura-core`, `arthneura-market`.
 
-Stop any old arthneura-dev-node / arthneura-pg first (port clash).
+Stop any leftover `arthneura-dev-node` / `arthneura-pg` first. Ports 8080 and 9944 clash.
 
-    docker compose up --build
+    docker compose up -d --build
 
-Then:
+This is a Development chain on disk (`--chain` file spec + `nodedata` volume).
+Not a public testnet. Do not `docker compose down -v` unless you mean to wipe state.
+
+Health:
+
+    curl -s http://127.0.0.1:8080/health
+    curl -s http://127.0.0.1:9944 -H 'Content-Type: application/json' \
+      -d '{"id":1,"jsonrpc":"2.0","method":"chain_getBlockHash","params":[0]}'
+
+Expected genesis (block 0):
+
+    0x479d11863b432f7531d7ccb5f5ad190d25401c0cda8d9fe5341b0fbbdb97eb44
+
+Agents on this genesis live in `~/agents/alice` and `~/agents/bob`.
+Same genesis: leave the json. New genesis: delete the json, then register.
+
+Market + court:
 
     ./scripts/happy.sh
     ./scripts/fight.sh
 
-Core-only court (no market):
+Isolated keystores (same node):
+
+    ./scripts/two-drawer-settle.sh
+    ./scripts/two-drawer-fight.sh
+
+Court only, no market:
 
     cd ../arthneura-core && ./scripts/stranger-settle.sh
 
-Dev window is 10 blocks. Not testnet.
+Persist notes: [docs/local-persist.md](docs/local-persist.md).
+Site: [arthneura.com/connect](https://arthneura.com/connect) — MCP URL is not live.
