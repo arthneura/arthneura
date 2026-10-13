@@ -125,4 +125,4 @@ Court only, no market:
     cd ../arthneura-core && ./scripts/stranger-settle.sh
 
 Persist notes: [docs/local-persist.md](docs/local-persist.md).
-Site: [arthneura.com/connect](https://arthneura.com/connect) — MCP URL is not live.
+Site: [arthneura.com/connect](https://arthneura.com/connect) — MCP URL is not live..
