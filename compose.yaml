@@ -62,8 +62,14 @@ services:
     environment:
       DATABASE_URL: postgres://arthneura:arthneura@pg:5432/arthneura_market?sslmode=disable
       HTTP_ADDR: :8080
+      TRANSFER_BIN: /usr/local/bin/transfer-me
+      CHAIN_WS: ws://arthneura-node-1:9944
     ports:
       - "8080:8080"
+    volumes:
+      - /usr/local/bin/transfer-me:/usr/local/bin/transfer-me:ro
+      - /usr/local/bin/offchain-vector-db:/usr/local/bin/offchain-vector-db:ro
+      - /usr/lib/x86_64-linux-gnu/libgcc_s.so.1:/usr/lib/x86_64-linux-gnu/libgcc_s.so.1:ro
     depends_on:
       pg:
         condition: service_healthy
